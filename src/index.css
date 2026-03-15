@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-ink text-parchment font-sans font-light antialiased overflow-x-hidden;
+  }
+  img { @apply block w-full object-cover; }
+  a   { @apply no-underline; }
+  *   { box-sizing: border-box; }
+}
+
+@layer components {
+  /* Gold divider line */
+  .gold-divider {
+    @apply w-16 h-px mx-auto my-4;
+    background: linear-gradient(90deg, transparent, #D4A843, transparent);
+  }
+  .gold-divider-left {
+    @apply w-16 h-px my-4;
+    background: linear-gradient(90deg, #D4A843, transparent);
+  }
+
+  /* Section eyebrow — italic script */
+  .eyebrow {
+    @apply block font-script text-gold text-xl text-center;
+  }
+  .eyebrow-left {
+    @apply block font-script text-gold text-xl;
+  }
+
+  /* Section title */
+  .section-title {
+    @apply font-display font-bold text-parchment text-center;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Primary gold button — matches reference exactly */
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-7 py-3 font-sans text-2xs font-semibold
+           tracking-widest2 uppercase text-ink rounded-sm transition-all duration-300
+           hover:brightness-110 hover:-translate-y-0.5;
+    background: linear-gradient(135deg, #D4A843, #F0C866);
+  }
+  .btn-primary::after {
+    content: '——';
+    @apply text-ink/60 font-light tracking-tighter;
+  }
+
+  /* Outline gold button */
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 font-sans text-2xs font-semibold
+           tracking-widest2 uppercase text-gold border border-gold rounded-sm
+           transition-all duration-300 hover:bg-gold hover:text-ink;
+  }
+
+  /* Tab pill */
+  .tab-pill {
+    @apply px-4 py-1.5 font-sans text-2xs tracking-widest uppercase rounded-sm
+           transition-all duration-200 cursor-pointer border;
+  }
+  .tab-pill.active {
+    @apply bg-gold text-ink border-gold font-semibold;
+  }
+  .tab-pill:not(.active) {
+    @apply text-muted border-muted/30 hover:border-gold/50 hover:text-gold;
+  }
+
+  /* Sushi card — Today's Special style */
+  .sushi-card {
+    @apply bg-deep border border-gold/10 rounded-sm overflow-hidden
+           transition-all duration-300 hover:-translate-y-1 hover:border-gold/40
+           hover:shadow-[0_12px_40px_rgba(0,0,0,0.7)];
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply font-sans text-2xs tracking-widest2 uppercase text-cream/70
+           transition-colors duration-300 hover:text-gold relative pb-0.5;
+  }
+  .nav-link.active { @apply text-gold; }
+}
+
+@layer utilities {
+  .bg-gold-grad { background: linear-gradient(135deg, #D4A843, #F0C866); }
+  .text-shadow-gold { text-shadow: 0 0 40px rgba(212,168,67,0.4); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0E0C02; }
+::-webkit-scrollbar-thumb { background: #D4A84340; }
+::-webkit-scrollbar-thumb:hover { background: #D4A84380; }
